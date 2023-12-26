@@ -1,0 +1,5 @@
+---
+- name: Ensure SSH group is present on machine
+  group:
+    name: "{{ ssh_allowed_group }}"
+    state: present

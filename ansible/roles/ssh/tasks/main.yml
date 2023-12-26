@@ -1,0 +1,18 @@
+---
+- name: Create group for SSH authentication
+  ansible.builtin.include_tasks: create-ssh-group.yml
+
+- name: Create user for SSH authentication
+  ansible.builtin.include_tasks: create-ssh-user.yml
+
+- name: Create user for SUDO privileges
+  ansible.builtin.include_tasks: create-sudo-user.yml
+
+- name: Install Google Authenticator on remote machine
+  ansible.builtin.include_tasks: install-google-auth.yml
+
+- name: Setup Google Authenticator for user authenticating
+  ansible.builtin.include_tasks: setup-google-auth.yml
+
+- name: Enforce SSHD config
+  ansible.builtin.include_tasks: enforce-sshd-conf.yml

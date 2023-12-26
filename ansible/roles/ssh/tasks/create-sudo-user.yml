@@ -1,0 +1,25 @@
+---
+- name: Add Sudo user
+  user:
+    name: "{{ sudo_user_name }}"
+    state: present
+  become: yes
+
+- name: Add Sudo user to Sudo group
+  user:
+    name: "{{ sudo_user_name }}"
+    group: "sudo"
+    state: present
+  become: yes
+
+- name: Create a .ssh direcotry for the sudo user
+  file:
+    path: "/home/{{ sudo_user_name }}/.ssh"
+    state: directory
+    mode: "0700"
+  become_user: "{{ sudo_user_name }}"
+
+- name: Password protect the Sudo user
+  user:
+    name: "{{ sudo_user_name }}"
+    password: "{{ sudo_user_password }}"

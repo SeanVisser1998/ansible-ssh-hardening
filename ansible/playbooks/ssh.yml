@@ -1,0 +1,10 @@
+---
+- name: Execute SSH role
+  hosts: ssh_servers
+  become: yes
+
+  roles:
+    - name: ssh setup
+      role: '../roles/ssh'
+      vars_files:
+        - '../roles/ssh/vars/main.yml'

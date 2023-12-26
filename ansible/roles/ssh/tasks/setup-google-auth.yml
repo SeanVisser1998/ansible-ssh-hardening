@@ -1,0 +1,16 @@
+---
+- name: Check if Google authenticator is already setup
+  stat:
+    path: "/home/{{ ssh_user_name }}/.google_authenticator"
+  register: auth_file
+
+- name: Setup Google Authenticator for the SSH user
+  shell: |
+    su -c "google-authenticator --no-confirm --time-based --disallow-reuse --window-size=5 --rate-limit=3 --rate-time=15 --qr-mode=UTF8 --force" -s /bin/bash "{{ ssh_user_name }}"
+  become: yes
+  register: secret_key
+  when: not auth_file.stat.exists
+
+- debug:
+    msg: "Secret Key: {{ secret_key.stdout }}"
+  when: not auth_file.stat.exists

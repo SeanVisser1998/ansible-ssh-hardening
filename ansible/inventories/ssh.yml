@@ -1,0 +1,2 @@
+[ssh_servers]
+ssh0 ansible_host="{{ lookup('env', 'ANSIBLE_HOST_NAME')}}" ansible_user="{{ lookup('env', 'ANSIBLE_USER_NAME')}}" ansible_ssh_pass="{{ lookup('env', 'ANSIBLE_SSH_PASSWORD') }}"

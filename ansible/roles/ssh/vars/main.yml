@@ -1,0 +1,16 @@
+---
+# ssh_allowed_group represents the groupname that will be assigned to the newly created SSH user
+ssh_allowed_group: <GROUP NAME FOR SSH GOES HERE>
+
+# ssh_user_name represents the username that will be created for SSH authentication
+ssh_user_name: <USERNAME YOU WANT THE SSH USER TO HAVE GOES HERE>
+
+# ssh_public_keys represents the accepted public keys for ssh_user_name
+ssh_public_keys:
+  - "<PUBLIC KEY FOR AUTHENTICATION FOR SSH_USER_NAME GOES HERE"
+
+# sudo_user_name represents the SUDO user created for facilitating privilege seperation
+sudo_user_name: <SUDO USERNAME GOES HERE>
+
+# sudo_user_password represents the encrypted passwd assigned to sudo_user_name
+sudo_user_password: "<ENCRYPTED PASSWORD GOES HERE, SEE https://www.openssl.org/docs/man1.1.1/man1/openssl-passwd.html FOR MORE INFORMATION>" 
